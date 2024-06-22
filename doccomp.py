@@ -25,12 +25,29 @@ def get_container_details(container_name):
 
 def process_ports(details):
     ports = []
+    # Assuming 'details' should contain a list of port bindings
+    if not isinstance(details, list):
+        print("Expected 'details' to be a list, got:", type(details))
+        return ports
+
     for binding in details:
+        if not isinstance(binding, dict):
+            print("Expected each 'binding' to be a dictionary, got:", type(binding))
+            continue  # Skip this iteration if the binding is not a dictionary
+
         try:
-            ports.append(f"{binding['HostPort']}:{binding['ContainerPort']}")
-        except KeyError:
-            print("Available keys in 'binding':", binding.keys())  # Debugging line
-            raise
+            # Adjust the keys according to the actual structure of 'binding'
+            host_port = binding.get('HostPort')
+            container_port = binding.get('ContainerPort')
+            if host_port and container_port:
+                ports.append(f"{host_port}:{container_port}")
+            else:
+                print("Missing 'HostPort' or 'ContainerPort' in binding:", binding)
+        except KeyError as e:
+            print("KeyError accessing port information:", e)
+            print("Available keys in 'binding':", binding.keys())
+            continue  # Skip to the next binding if a key is missing
+
     return ports
 
 def process_volumes(details):
