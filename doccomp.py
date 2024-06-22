@@ -25,11 +25,12 @@ def get_container_details(container_name):
 
 def process_ports(details):
     ports = []
-    if 'Ports' in details['NetworkSettings']:
-        for port_bindings in details['NetworkSettings']['Ports'].values():
-            if port_bindings is not None:
-                for binding in port_bindings:
-                    ports.append(f"{binding['HostPort']}:{binding['ContainerPort']}")
+    for binding in details:
+        try:
+            ports.append(f"{binding['HostPort']}:{binding['ContainerPort']}")
+        except KeyError:
+            print("Available keys in 'binding':", binding.keys())  # Debugging line
+            raise
     return ports
 
 def process_volumes(details):
