@@ -24,29 +24,22 @@ def get_container_details(container_name):
         return None
 
 def process_ports(details):
+    print("Details received:", details)  # Debugging line to inspect the structure
     ports = []
-    # Assuming 'details' should contain a list of port bindings
-    if not isinstance(details, list):
-        print("Expected 'details' to be a list, got:", type(details))
+    # Check if 'details' is a dictionary and contains the expected key for port bindings
+    if not isinstance(details, dict):
+        print("Expected 'details' to be a dictionary, got:", type(details))
         return ports
 
-    for binding in details:
-        if not isinstance(binding, dict):
-            print("Expected each 'binding' to be a dictionary, got:", type(binding))
-            continue  # Skip this iteration if the binding is not a dictionary
-
-        try:
-            # Adjust the keys according to the actual structure of 'binding'
-            host_port = binding.get('HostPort')
-            container_port = binding.get('ContainerPort')
-            if host_port and container_port:
+    # Assuming the port bindings are under a key like 'Ports' in the 'details' dictionary
+    port_bindings = details.get('NetworkSettings', {}).get('Ports', {})
+    for container_port, bindings in port_bindings.items():
+        if bindings is None:
+            continue  # No bindings for this port
+        for binding in bindings:
+            if 'HostPort' in binding:
+                host_port = binding['HostPort']
                 ports.append(f"{host_port}:{container_port}")
-            else:
-                print("Missing 'HostPort' or 'ContainerPort' in binding:", binding)
-        except KeyError as e:
-            print("KeyError accessing port information:", e)
-            print("Available keys in 'binding':", binding.keys())
-            continue  # Skip to the next binding if a key is missing
 
     return ports
 
