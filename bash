@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -gt 0 ]; then
-    python3 generate_docker_compose.py "$@"
+    python3 doccomp.py "$@"
 else
-    python3 generate_docker_compose.py
+    python3 doccomp.py
 fi
