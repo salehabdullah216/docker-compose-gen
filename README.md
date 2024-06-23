@@ -47,10 +47,10 @@ To use a different output file name:
 
 ### Python Script Details
 
-Run `generate_docker_compose.py` directly with optional arguments:
+Run `generator.py` directly with optional arguments:
 
 ```bash
-python3 generate_docker_compose.py [container_names] -o [output_file]
+python3 generator.py [container_names] -o [output_file]
 ```
 
 ## Contributing
