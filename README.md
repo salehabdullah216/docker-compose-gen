@@ -33,7 +33,7 @@ To generate a `docker-compose.yml` file for all running containers, run:
 To generate for specific containers, provide their names:
 
 ```bash
-./setup.sh adguard pihole watchtower
+./setup.sh adguard   pihole watchtower
 # Example usage: ./setup.sh container1 container2 container3
 ```
 
@@ -60,3 +60,4 @@ Feel free to open issues or submit pull requests if you have any suggestions or 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
