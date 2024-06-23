@@ -1,6 +1,15 @@
 # Docker Compose Generator
 
-This script generates a `docker-compose.yml` file for your Docker containers. It can either autodetect running containers or use specified container names provided as arguments.
+This tool simplifies the creation of `docker-compose.yml` files, automating the setup of Docker environments. Docker Compose is a tool for defining and running multi-container Docker applications. With this generator, you can quickly configure and manage your Docker containers either by autodetecting running containers or specifying them manually.
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration Options](#configuration-options)
+- [Contributing](#contributing)
+- [License](#license)
+- [FAQ](#faq)
 
 ## Prerequisites
 
@@ -33,7 +42,7 @@ To generate a `docker-compose.yml` file for all running containers, run:
 To generate for specific containers, provide their names:
 
 ```bash
-./setup.sh adguard   pihole watchtower
+./setup.sh adguard pihole watchtower
 # Example usage: ./setup.sh container1 container2 container3
 ```
 
@@ -61,3 +70,4 @@ Feel free to open issues or submit pull requests if you have any suggestions or 
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## FAQ
