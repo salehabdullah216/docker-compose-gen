@@ -33,7 +33,7 @@ To generate a `docker-compose.yml` file for all running containers, run:
 To generate for specific containers, provide their names:
 
 ```bash
-./setup.sh jellyfin sonarr watchtower
+./setup.sh adguard pihole watchtower
 # Example usage: ./setup.sh container1 container2 container3
 ```
 
