@@ -25,7 +25,7 @@ pip install pyyaml
 To generate a `docker-compose.yml` file for all running containers, run:
 
 ```bash
-./generate_docker_compose.sh
+./setup.sh
 ```
 
 ### Specify Container Names
@@ -33,8 +33,8 @@ To generate a `docker-compose.yml` file for all running containers, run:
 To generate for specific containers, provide their names:
 
 ```bash
-./generate_docker_compose.sh jellyfin sonarr watchtower
-# Example usage: ./generate_docker_compose.sh container1 container2 container3
+./setup.sh jellyfin sonarr watchtower
+# Example usage: ./setup.sh container1 container2 container3
 ```
 
 ### Specify Output File Name
@@ -42,7 +42,7 @@ To generate for specific containers, provide their names:
 To use a different output file name:
 
 ```bash
-./generate_docker_compose.sh -o custom-compose.yml
+./setup.sh -o custom-compose.yml
 ```
 
 ### Python Script Details
